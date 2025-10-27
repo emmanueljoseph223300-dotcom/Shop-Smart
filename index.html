@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ShopSmart — Demo E-commerce</title>
+
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="brand">ShopSmart</div>
+    <nav class="main-nav">
+      <a href="#" data-page="home">Home</a>
+      <a href="#" data-page="store">Store</a>
+      <a href="#" data-page="vendors">Vendors</a>
+      <a href="#" data-page="dashboard" id="dashboard-link">Dashboard</a>
+      <a href="#" data-page="settings" id="settings-link">Settings</a>
+    </nav>
+    <div class="header-actions">
+      <button id="cart-btn" title="Cart"><i class="bi bi-cart"></i><span id="cart-count">0</span></button>
+      <button id="login-btn">Login / Register</button>
+      <button id="logout-btn" class="hidden">Logout</button>
+    </div>
+  </header>
+
+  <main id="app">
+    <!-- Pages will be rendered here -->
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <p>&copy; <span id="year"></span> ShopSmart — Demo</p>
+  </footer>
+
+  <!-- Modals -->
+  <div class="modal-backdrop hidden" id="modal-backdrop"></div>
+
+  <!-- Login/Register Modal -->
+  <div class="modal hidden" id="auth-modal" aria-hidden="true">
+    <div class="modal-card">
+      <button class="modal-close" data-close>&times;</button>
+      <div id="auth-forms">
+        <!-- Login Form -->
+        <div id="login-form">
+          <h2>Login</h2>
+          <input id="login-email" placeholder="Email" type="email">
+          <input id="login-password" placeholder="Password" type="password">
+          <button id="login-submit">Login Now</button>
+          <p>New? <a href="#" id="show-register">Register now</a></p>
+        </div>
+
+        <!-- Register Form -->
+        <div id="register-form" class="hidden">
+          <h2>Register</h2>
+          <input id="reg-name" placeholder="Full name" type="text">
+          <input id="reg-email" placeholder="Email" type="email">
+          <input id="reg-password" placeholder="Password" type="password">
+          <label>
+            Account type:
+            <select id="reg-role">
+              <option value="customer">Customer</option>
+              <option value="vendor">Vendor</option>
+            </select>
+          </label>
+          <button id="register-submit">Create Account</button>
+          <p>Have account? <a href="#" id="show-login">Login</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Cart Modal -->
+  <div class="modal hidden" id="cart-modal" aria-hidden="true">
+    <div class="modal-card">
+      <button class="modal-close" data-close>&times;</button>
+      <h2>Your Cart</h2>
+      <div id="cart-items"></div>
+      <div class="cart-summary">
+        <div>Total: <span id="cart-total">₦0.00</span></div>
+        <div class="cart-actions">
+          <button id="checkout-btn">Checkout</button>
+          <button id="clear-cart-btn">Clear Cart</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Checkout Modal -->
+  <div class="modal hidden" id="checkout-modal" aria-hidden="true">
+    <div class="modal-card">
+      <button class="modal-close" data-close>&times;</button>
+      <h2>Checkout</h2>
+      <div id="checkout-area">
+        <label>Payment method:
+          <select id="payment-method">
+            <option value="wallet">Wallet Balance</option>
+            <option value="card">Card (simulated)</option>
+            <option value="bank">Bank Transfer (simulated)</option>
+          </select>
+        </label>
+
+        <div id="pin-area" class="pin-area">
+          <label>Enter PIN (4 digits): <input id="checkout-pin" type="password" maxlength="6"></label>
+        </div>
+
+        <button id="confirm-payment">Confirm Payment</button>
+        <div id="checkout-message" class="message"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Vendor Register Modal -->
+  <div class="modal hidden" id="vendor-modal" aria-hidden="true">
+    <div class="modal-card">
+      <button class="modal-close" data-close>&times;</button>
+      <h2>Register as Vendor</h2>
+      <input id="vendor-name" placeholder="Vendor name" type="text">
+      <select id="vendor-category">
+        <option value="Food">Food</option>
+        <option value="Shoes">Shoes</option>
+        <option value="Clothes">Clothes</option>
+        <option value="Bags">Bags</option>
+        <option value="Other">Other</option>
+      </select>
+      <button id="vendor-register-btn">Register Vendor</button>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="script.js"></script>
+</body>
+</html>
